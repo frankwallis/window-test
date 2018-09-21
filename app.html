@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>window test</title>
+</head>
+
+<body>
+	<div class="panel-group">
+		<button id="button-create-window">New Window</button>
+	</div>
+	<div class="panel-group">
+        <button id="button-create-element">Create Element</button>
+    </div>
+    
+    <script>
+        const buttonCreateWindow = document.querySelector('#button-create-window');
+        buttonCreateWindow.addEventListener('click', () => createWindow('newwindow'));
+
+        const buttonCreateElement = document.querySelector('#button-create-element');
+        buttonCreateElement.addEventListener('click', () => createElement());
+
+        const children = [];
+
+        function createWindow(title) {
+            const child = window.open();
+            child.document.body.appendChild(document.createTextNode(new Date().toString()));
+            children.push(child);
+        }
+
+        function createElement() {
+            children.forEach(child => child.document.body.appendChild(document.createTextNode(new Date().toString())));
+        }
+    </script>
+</body>
+
+</html>
